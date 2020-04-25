@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link to="/">Go Back</router-link>
+        <router-link to="/" id="go-back">Go Back</router-link>
         <h1>Add A Project</h1>
         <form action="">
             <input type="text" name="project-title" id="project-title" placeholder="Project title">
@@ -35,6 +35,10 @@
 </script>
 
 <style lang="scss" scoped>
+    h1 {
+        margin-top: 50px;
+    }
+    
     // input boxes
     input {
         display: block;
@@ -100,5 +104,20 @@
         background-color: purple;
         border: none;
         color: white;
+    }
+    #go-back {
+        color: purple;
+        text-decoration: none;
+        padding: 10px;
+        border: 1px solid purple;
+        border-radius: 3px;
+        // margin-bottom: 25px;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+            background-color: purple;
+            color: white;
+            transition: 0.3s ease-in-out;
+        }
     }
 </style>

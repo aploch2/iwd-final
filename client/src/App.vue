@@ -31,4 +31,19 @@
     }
   }
 }
+ #add-project {
+          color: purple;
+          text-decoration: none;
+          padding: 10px;
+          border: 1px solid purple;
+          border-radius: 3px;
+          // margin-bottom: 25px;
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+              background-color: purple;
+              color: white;
+              transition: 0.3s ease-in-out;
+          }
+      }
 </style>

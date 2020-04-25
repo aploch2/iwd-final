@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <router-link to="/add-project">New Project</router-link> 
+    <router-link to="/add-project" id="add-project">New Project</router-link> 
   </div>
 </template>
 
@@ -15,3 +15,20 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+  #add-project {
+          color: purple;
+          text-decoration: none;
+          padding: 10px;
+          border: 1px solid purple;
+          border-radius: 3px;
+          // margin-bottom: 25px;
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+              background-color: purple;
+              color: white;
+              transition: 0.3s ease-in-out;
+          }
+      }
+</style>
