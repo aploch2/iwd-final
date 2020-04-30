@@ -24,10 +24,12 @@
 
 <script>
     export default {
-        
+    props: {
+    
+    }, 
     methods: {
         submit(){
-
+            // newProject = new Project();
         },
     },
     }
