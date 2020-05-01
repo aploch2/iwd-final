@@ -11,8 +11,12 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const projects = await loadProjectsCollection();
     await projects.insertOne({
-        name: req.body.name,
-        createdAt: new Date()
+        title: req.body.title,
+        deadline: req.body.deadline,
+        link: req.body.link,
+        image: req.body.image,
+        todo: [],
+        completed: "false"
     });
     res.status(201).send();
 });

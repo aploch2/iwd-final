@@ -2,14 +2,14 @@
     <div>
         <router-link to="/" id="go-back">Go Back</router-link>
         <h1>Add A Project</h1>
-        <form action="">
-            <input type="text" name="project-title" id="project-title" placeholder="Project title">
-            <input type="text" name="project-link" id="project-link" placeholder="Github link">
+        
+            <input type="text" name="project-title" id="project-title" v-model="title" placeholder="Project title">
+            <input type="text" name="project-link" id="project-link" v-model="link" placeholder="Github link">
             <div class="github-deadline-container">
                 
                 <div class="project-flex-container">
                     <label for="project-deadline">Project Deadline</label>    
-                    <input type="date" name="project-deadline" id="project-deadline">
+                    <input type="date" name="project-deadline" id="project-deadline" v-model="deadline">
                 </div>
                 <div class="project-flex-container">
                     <label for="project-deadline">Project Image</label>    
@@ -17,19 +17,32 @@
                 </div>
 
             </div>
-            <input type="submit" value="Add Project" id="project-submit">
-        </form>
+            <input type="submit" value="Add Project" id="project-submit" @click="addProject">
+        
     </div>
 </template>
 
 <script>
+import ProjectService from '../ProjectService'
+
     export default {
     props: {
     
+    },
+    data() {
+        return {
+        projects: [],
+        error: '',
+        title: '',
+        deadline: '',
+        link: '',
+        }
     }, 
     methods: {
-        submit(){
+        async addProject(){
             // newProject = new Project();
+            await ProjectService.insertProject(this.title, this.link, this.deadline);
+            this.projects = await ProjectService.getProjects();
         },
     },
     }

@@ -1,29 +1,45 @@
 <template>
     <div class="project-card">
-        <div class="img-container">
-            <img :src="image" alt="Project Image">
-        </div>
+        <!-- <div class="img-container">
+            <img :src="project.image" alt="Project Image">
+        </div> -->
         <div class="card-info">
-            <h3>{{ title }}</h3>
-            <p><span>Deadline: </span>{{ deadline }}</p>
+            <h3>{{ project.title }}</h3>
+            <p><span>Deadline: </span>{{ project.deadline }}</p>
             <div class="link-container">
-                <a :href="link" target="_blank">GitHub Link</a>
+                <a :href="project.link" target="_blank">GitHub Link</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import ProjectService from "../ProjectService";
+
     export default {
-        name: "ProjectCard",
-        props: {
-            title: String,
-            deadline: String,
-            link: String,
-            image: String,
-        },
+        name: "Project",
+        props: [
+            "project"
+        ],
         components: {
 
+        },
+        data() {
+            return {
+            projects: [],
+            error: '',
+            title: '',
+            deadline: '',
+            link: '',
+            image: '',
+            }
+        },
+        async created() {
+            try { 
+                this.projects = await ProjectService.getProjects();
+            } catch(err) {
+                this.error = err.message;
+            }
         },
         methods: {
 
@@ -35,8 +51,9 @@
     .project-card {
         // width: 200px;
         // height: 200px;
-        background-color: #ccc;
+        background-color: rgba(0, 0, 0, 0.06);
         margin-top: 50px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
         border-radius: 3px;
         
         .card-info {
@@ -59,6 +76,7 @@
             }
         }
         .link-container {
+            margin-top: 25px;
             a {
                 color: purple;
                 text-decoration: none;
