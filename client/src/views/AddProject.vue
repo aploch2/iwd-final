@@ -1,8 +1,9 @@
 <template>
     <div>
-        <router-link to="/" id="go-back">Go Back</router-link>
+        <div class="nav">
+            <router-link to="/" id="go-back">Go Back</router-link>
+        </div>
         <h1>Add A Project</h1>
-        
             <input type="text" name="project-title" id="project-title" v-model="title" placeholder="Project title">
             <input type="text" name="project-link" id="project-link" v-model="link" placeholder="Github link">
             <div class="github-deadline-container">
@@ -11,14 +12,13 @@
                     <label for="project-deadline">Project Deadline</label>    
                     <input type="date" name="project-deadline" id="project-deadline" v-model="deadline">
                 </div>
-                <div class="project-flex-container">
+                <!-- <div class="project-flex-container">
                     <label for="project-deadline">Project Image</label>    
                     <input type="file" name="project-image" id="project-image">
-                </div>
+                </div> -->
 
             </div>
             <input type="submit" value="Add Project" id="project-submit" @click="addProject">
-        
     </div>
 </template>
 
@@ -109,7 +109,7 @@ import ProjectService from '../ProjectService'
             display: inline-block;
             width: 100%;
         }
-        &:first-child {
+        &:nth-child(2) {
             border-right: 1px solid rgb(211, 211, 211);
             margin-right: 15px;
             padding-right: 25px;
@@ -117,22 +117,32 @@ import ProjectService from '../ProjectService'
     }
     #project-submit {
         background-color: purple;
-        border: none;
-        color: white;
-    }
-    #go-back {
-        color: purple;
-        text-decoration: none;
-        padding: 10px;
         border: 1px solid purple;
-        border-radius: 3px;
-        // margin-bottom: 25px;
+        color: white;
         transition: 0.3s ease-in-out;
 
         &:hover {
-            background-color: purple;
-            color: white;
+            background-color: #fff;
+            color:  purple;
+            cursor: pointer;
+        }
+    }
+    .nav {
+        margin-top: 50px;
+
+        #go-back {
+            color: purple;
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid purple;
+            border-radius: 3px;
             transition: 0.3s ease-in-out;
+
+            &:hover {
+                background-color: purple;
+                color: white;
+                transition: 0.3s ease-in-out;
+            }
         }
     }
 </style>

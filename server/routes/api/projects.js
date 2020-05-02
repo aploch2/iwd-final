@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         title: req.body.title,
         deadline: req.body.deadline,
         link: req.body.link,
-        image: req.body.image,
+        // image: req.body.image,
         todo: [],
         completed: "false"
     });

@@ -10,6 +10,9 @@
   padding: 0;
   margin: 0;
 }
+body {
+  // background-color: #ccc;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,4 +20,7 @@
   text-align: center;
   color: #2c3e50;
 } 
+.pageTitle {
+  margin-top: 25px;
+}
 </style>

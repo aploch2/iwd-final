@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>{{ pageTitle }}</h1>
+    <h1 class="pageTitle">{{ pageTitle }}</h1>
     <Navbar />
     <Projects :projects="projects" />
     
