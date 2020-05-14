@@ -9,6 +9,9 @@
             <div class="link-container">
                 <a :href="project.link" target="_blank">GitHub Link</a>
             </div>
+            <div class="link-container">
+                <p @click="deleteProject(project._id)">delete</p>
+            </div>
         </div>
     </div>
 </template>
@@ -42,7 +45,12 @@ import ProjectService from "../ProjectService";
             }
         },
         methods: {
-
+            async deleteProject(id){
+            // newProject = new Project();
+            await ProjectService.deleteProject(id);
+            this.projects = await ProjectService.getProjects();
+            console.log("deleted document with id:" . id );
+        },
         },
     }
 </script>

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import axios from 'axios';
 
-const url = 'http://192.168.1.175:5000/api/projects';
+const url = 'http://192.168.1.175:5000/api/projects/';
 
 class ProjectService {
     // Gets the projects
@@ -17,6 +17,7 @@ class ProjectService {
                     }))
                 );
             } catch(err) {
+                // console.log(error.response);
                 reject(err);
             }
         });
