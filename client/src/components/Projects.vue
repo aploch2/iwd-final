@@ -24,5 +24,14 @@ import Project from "./ProjectCard"
     .project-container {
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto;
+        
+        
+        div {
+            // margin-right: 25px;
+            margin: 15px;
+        }
     }
 </style>

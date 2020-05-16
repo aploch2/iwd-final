@@ -4,9 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-# RUN npm rebuild node-sass
-# RUN npm audit fix
-# RUN npm install
+
 RUN npm run build
 
 # production stage

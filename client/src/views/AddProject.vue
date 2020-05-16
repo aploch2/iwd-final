@@ -43,6 +43,7 @@ import ProjectService from '../ProjectService'
             // newProject = new Project();
             await ProjectService.insertProject(this.title, this.link, this.deadline);
             this.projects = await ProjectService.getProjects();
+            this.$router.push({path: '/'});
         },
     },
     }

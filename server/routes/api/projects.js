@@ -27,6 +27,12 @@ router.delete('/:id', async (req, res) => {
     res.status(200).send();
 });
 
+router.get('/:id', async (req, res) => {
+    const projects = await loadProjectsCollection();
+    res.send(await projects.findOne({"_id": mongodb.ObjectId(req.params.id)}));
+    // res.status(200).send();
+});
+
 async function loadProjectsCollection(){
     const client = await mongodb.MongoClient.connect('mongodb://localhost:27017/iwd_final', {
         useNewUrlParser: true

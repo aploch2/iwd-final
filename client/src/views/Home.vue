@@ -3,7 +3,7 @@
     <h1 class="pageTitle">{{ pageTitle }}</h1>
     <Navbar />
     <Projects :projects="projects" />
-    
+    <!-- <DeleteModal /> -->
      
   </div>
 </template>
@@ -14,6 +14,7 @@
 import Projects from "@/components/Projects.vue";
 import ProjectService from "../ProjectService";
 import Navbar from "@/components/Navbar";
+// import DeleteModal from "@/components/DeleteModal.vue";
 
 export default {
   name: "Home",
@@ -23,6 +24,7 @@ export default {
   components: {
     Projects,
     Navbar,
+    // DeleteModal,
   },
   data() {
     return {
@@ -47,5 +49,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-  
+  #delete-modal {
+    display: none;
+  }
 </style>

@@ -1,14 +1,13 @@
-/* eslint-disable */
+
 import axios from 'axios';
 
 const url = 'http://192.168.1.175:5000/api/projects/';
 
 class ProjectService {
     // Gets the projects
-    static getProjects() {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const res = await axios.get(url);
+     static getProjects() {
+        return new Promise ((resolve,reject) => {
+            axios.get(url).then((res) => {
                 const data = res.data;
                 resolve(
                     data.map(project => ({
@@ -16,10 +15,11 @@ class ProjectService {
                         
                     }))
                 );
-            } catch(err) {
-                // console.log(error.response);
+            })
+            .catch((err)=> {
                 reject(err);
-            }
+            })
+            
         });
     }
 
@@ -34,6 +34,11 @@ class ProjectService {
 
     static deleteProject(id){
         return axios.delete(`${url}${id}`);
+    }
+    static getProject(id){
+        return axios.get(`${url}${id}`).then(response => {
+            return response.data
+        });
     }
 }
 

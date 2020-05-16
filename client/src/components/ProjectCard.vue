@@ -4,32 +4,36 @@
             <img :src="project.image" alt="Project Image">
         </div> -->
         <div class="card-info">
-            <h3>{{ project.title }}</h3>
+            <router-link class="project-page-link" :to="{ name: 'project', params: { id: project._id } }">{{ project.title }}</router-link>
+            <!-- <h3>{{ project.title }}</h3> -->
             <p class="project-deadline"><span>Deadline: </span>{{ project.deadline }}</p>
             <div class="link-container">
                 <a :href="project.link" target="_blank">GitHub Link</a>
             </div>
-            <div class="link-container">
-                <p @click="deleteProject(project._id)">delete</p>
+            <div class="delete-container">
+                <p class="delete-link" @click="deleteProject(project.title, project._id)">delete</p>
             </div>
         </div>
+        <DeleteModal />
     </div>
 </template>
 
 <script>
 import ProjectService from "../ProjectService";
+import DeleteModal from "./DeleteModal";
 
     export default {
         name: "Project",
         props: [
-            "project"
+            "project",
+            "id"
         ],
         components: {
-
+            DeleteModal,
         },
         data() {
             return {
-            projects: [],
+            // projects: [],
             error: '',
             title: '',
             deadline: '',
@@ -45,12 +49,20 @@ import ProjectService from "../ProjectService";
             }
         },
         methods: {
-            async deleteProject(id){
+            async deleteProject(title, id){
             // newProject = new Project();
-            await ProjectService.deleteProject(id);
-            this.projects = await ProjectService.getProjects();
-            console.log("deleted document with id:" . id );
-        },
+            if(confirm("Delete project: " + title + "?")){
+                await ProjectService.deleteProject(id);
+                this.projects = await ProjectService.getProjects();
+                console.log("deleted document titled: "+ title + " " + id);
+                this.$router.go();
+            }
+            
+            // console.log("deleted document with id: " + id);
+            },
+            deletePrompt(){
+                document.getElementById("delete-modal").style.display = "block";
+            }
         },
     }
 </script>
@@ -61,12 +73,16 @@ import ProjectService from "../ProjectService";
         // height: 200px;
         background-color: rgba(0, 0, 0, 0.06);
         margin-top: 50px;
+        // margin-right: 50px;
         border: 2px solid rgba(0, 0, 0, 0.1);
         border-radius: 3px;
+        flex: 1 0 21%;
         
-        h3 {
+        .project-page-link {
             margin-bottom: 15px;
             color: purple;
+            font-size: 1.25em;
+            text-decoration: none;
         }
         .project-deadline {
             color: purple;
@@ -114,5 +130,24 @@ import ProjectService from "../ProjectService";
                 }  
             }
         }
+        .delete-container {
+            margin-top: 25px;
+
+            .delete-link {
+                color: purple;
+                border: 1px solid rgba(0, 0, 0, 0.0);
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    border: 1px solid purple;
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+        }
+        
+    }
+    #delete-modal {
+        display: none;
     }
 </style>
