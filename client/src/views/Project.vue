@@ -2,7 +2,7 @@
     <div>
         <div class="nav">
             <router-link to="/" id="go-back">Go Back</router-link>
-            <button @click="loadProject(id)">Test</button>
+            <!-- <button @click="loadProject(id)">Test</button> -->
         </div>
         <!-- {{ project._id }} -->
         <h3>{{singleProject.title}}</h3>
