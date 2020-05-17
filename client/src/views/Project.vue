@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="project-page">
         <div class="nav">
             <router-link to="/" id="go-back">Go Back</router-link>
             <!-- <button @click="loadProject(id)">Test</button> -->
         </div>
         <!-- {{ project._id }} -->
-        <h3>{{singleProject.title}}</h3>
+        <h1>{{singleProject.title}}</h1>
         <h5><a :href="singleProject.link">Github Link</a></h5>
         <h3>{{singleProject.deadline}}</h3>
         <!-- {{projectTitle}} -->
@@ -58,8 +58,10 @@ import ProjectService from "../ProjectService";
 </script>
 
 <style lang="scss" scoped>
-.nav {
-        margin-top: 50px;
+    .project-page {
+        padding: 50px 0;
+    }
+    .nav {
 
         #go-back {
             color: purple;

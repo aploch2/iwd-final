@@ -16,7 +16,7 @@
 
         a {
             font-weight: bold;
-            color: purple;
+            color: white;
 
             &.router-link-exact-active {
             color: #42b983;
@@ -24,17 +24,18 @@
         }
     }
     #add-project {
-        color: purple;
         text-decoration: none;
         padding: 10px;
+        background-color: purple;
         border: 1px solid purple;
         border-radius: 3px;
+        color: white;
         // margin-bottom: 25px;
         transition: 0.3s ease-in-out;
 
         &:hover {
-            background-color: purple;
-            color: white;
+            background-color: rgba(white, 0);
+            color: purple;
             transition: 0.3s ease-in-out;
         }
     }

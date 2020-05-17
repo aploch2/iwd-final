@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="add-project">
         <div class="nav">
             <router-link to="/" id="go-back">Go Back</router-link>
         </div>
@@ -128,8 +128,11 @@ import ProjectService from '../ProjectService'
             cursor: pointer;
         }
     }
+    .add-project {
+        padding: 50px 0;
+    }
     .nav {
-        margin-top: 50px;
+        // margin-top: 50px;
 
         #go-back {
             color: purple;
