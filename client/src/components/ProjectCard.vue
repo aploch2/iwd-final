@@ -71,10 +71,10 @@ import DeleteModal from "./DeleteModal";
     .project-card {
         // width: 200px;
         // height: 200px;
-        background-color: rgba(0, 0, 0, 0.06);
+        background-color: rgba(255, 255, 255, 1);
         margin-top: 50px;
         // margin-right: 50px;
-        border: 2px solid rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 255, 255, 1);
         border-radius: 3px;
         flex: 1 0 21%;
         
@@ -83,6 +83,12 @@ import DeleteModal from "./DeleteModal";
             color: purple;
             font-size: 1.25em;
             text-decoration: none;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                color: lightskyblue;
+                transition: 0.2s ease-in-out;
+            }
         }
         .project-deadline {
             color: purple;

@@ -8,9 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-// app.get('/', (req, res) => {
-//     res.send('hello here');
-// })
+
 
 const projects = require('./routes/api/projects');
 
