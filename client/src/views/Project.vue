@@ -10,8 +10,10 @@
         <!-- <input type="text" v-model="todo" name="todo"> 
         <button @click="toggleCompleted()">Add</button> -->
         <div class="todos" v-for="todo in singleProject.todos" :key="todo.todo">
-            {{todo.todo}}
-            {{todo.completed}}
+            <p>{{todo.todo}}</p>
+            <h6 v-if="todo.completed == false">False</h6>
+            <h6 v-else>True</h6>
+            
         </div>
 
     </div>
