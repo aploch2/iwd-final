@@ -4,9 +4,6 @@ services:
         container_name: project-manager-frontend
         restart: always
         build: ./client
-        volumes:
-            - .:/client
-            # - /client/node_modules
         ports: 
             - '8085:80'
         links:
