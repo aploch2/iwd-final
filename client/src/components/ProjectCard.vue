@@ -5,7 +5,6 @@
         </div> -->
         <div class="card-info">
             <router-link class="project-page-link" :to="{ name: 'project', params: { id: project._id } }">{{ project.title }}</router-link>
-            <!-- <h3>{{ project.title }}</h3> -->
             <p class="project-deadline"><span>Deadline: </span>{{ project.deadline }}</p>
             <div class="link-container">
                 <a :href="project.link" target="_blank">GitHub Link</a>

@@ -26,4 +26,21 @@ body {
 .pageTitle {
   margin-top: 25px;
 }
+.button-dark {
+  color: white;
+  background-color: purple;
+  padding: 10px;
+  border: 1px solid purple;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: purple;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+  }
+}
+.button-light {
+
+}
 </style>

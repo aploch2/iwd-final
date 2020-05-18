@@ -1,15 +1,19 @@
 <template>
     <div class="project-page">
         <div class="nav">
-            <router-link to="/" id="go-back">Go Back</router-link>
-            <!-- <button @click="loadProject(id)">Test</button> -->
+            <router-link to="/" id="go-back" >Go Back</router-link>
         </div>
-        <!-- {{ project._id }} -->
         <h1>{{singleProject.title}}</h1>
         <h5><a :href="singleProject.link">Github Link</a></h5>
         <h3>{{singleProject.deadline}}</h3>
-        <!-- {{projectTitle}} -->
-        <!-- {{ id }} -->
+        <h3>Add New Todo</h3>
+        <!-- <input type="text" v-model="todo" name="todo"> 
+        <button @click="toggleCompleted()">Add</button> -->
+        <div class="todos" v-for="todo in singleProject.todos" :key="todo.todo">
+            {{todo.todo}}
+            {{todo.completed}}
+        </div>
+
     </div>
 </template>
 
@@ -18,19 +22,14 @@ import ProjectService from "../ProjectService";
 
     export default {
         props: [
-            // 'project', 'id', 'title', 'link', 'deadline'
+            'todo',
         ],
         data() {
             return {
-                // id: '',
                 singleProject: [],
                 projectTitle: '',
                 projectLink: '',
                 projectDeadline: '',
-                // id: this.$route.params.id,
-                // title: this.project.data.title,
-                // link: this.project.data.link,
-                // deadline: this.project.data.deadline,
             }
         },
         async created() {
@@ -43,16 +42,21 @@ import ProjectService from "../ProjectService";
         //    this.id = this.$route.params.id; 
         },
         methods: {
-            // loadProject(title, id) {
-            //     ProjectService.getProject(id);
-            //     console.log("page for document with id: " + id + title);
+           async addTodo(){
+                await ProjectService.insertTodo(this.$route.params.id, "Project Test Fila");
+                console.log(this.todo);
+            // this.projects = await ProjectService.getProjects();
+                this.$router.go();
 
-            // },
+           },
+           async toggleCompleted(){
+               await ProjectService.toggleCompleted();
+               console.log("updated");
+               this.$router.go();
+           }
         },
         computed: {
-            validTitle (){
-                return "hello"
-            }
+            
         }
     }
 </script>
@@ -62,6 +66,7 @@ import ProjectService from "../ProjectService";
         padding: 50px 0;
     }
     .nav {
+        margin-bottom: 50px;
 
         #go-back {
             color: purple;
