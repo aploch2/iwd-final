@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const projects = await loadProjectsCollection();
     res.send(await projects.find({}).toArray());
+    projects.close();
 });
 
 router.post('/', async (req, res) => {
@@ -32,15 +33,15 @@ router.patch('/:id', async (req, res) => {
 })
 
 // remove a todo
-// router.patch('/:id', async (req, res) => {
-//     const projects = await loadProjectsCollection();
-//     let id = {"_id": mongodb.ObjectID(req.params.id)};
-//     let todo = {todo: "asdf", completed: false};
-//     let newTodo = { $pull: {"todos": todo}};
-//     projects.updateOne(id, newTodo);
+router.patch('/:id/edit', async (req, res) => {
+    const projects = await loadProjectsCollection();
+    let id = {"_id": mongodb.ObjectID(req.params.id)};
+    let todo = {todo: req.body.todo};
+    let newTodo = { $pull: {"todos": todo}};
+    projects.updateOne(id, newTodo);
 
-//     return res.status(200).send('todo added');    
-// })
+    return res.status(200).send('todo removed');    
+})
 
 router.delete('/:id', async (req, res) => {
     const projects = await loadProjectsCollection();

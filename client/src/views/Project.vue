@@ -2,6 +2,7 @@
     <div class="project-page">
         <div class="nav">
             <router-link to="/" id="go-back" >Go Back</router-link>
+           <router-link class="project-edit-page-link" :to="{ name: 'project-edit', params: { id: singleProject._id } }">Edit</router-link>
         </div>
         <h1>{{singleProject.title}}</h1>
         <h5><a :href="singleProject.link">Github Link</a></h5>
@@ -9,12 +10,12 @@
         <h3>Add New Todo</h3>
         <input type="text" v-model="newTodo" name="newTodo"> 
         <button @click="addTodo(newTodo)">Add</button>
-        <div v-if="todo = !null">
+        <div v-if="todo = !null" class="todoList">
             <div class="todos" v-for="(todo, index) in singleProject.todos" :key="index">
                 <p>{{todo.todo}}</p>
-                <h6 v-if="todo.completed == false">False</h6>
-                <h6 v-else>True</h6>
-                <p @click="removeTodo(todo)">remove</p>
+                <p v-if="todo.completed == false">Completed: False</p>
+                <p v-else>Completed: True</p>
+                <!-- <p @click="removeTodo(todo)">remove</p> -->
             </div>
         </div>
 
@@ -26,7 +27,7 @@ import ProjectService from "../ProjectService";
 
     export default {
         props: [
-            'newTodo',
+            'newTodo', "id"
         ],
         data() {
             return {
@@ -54,7 +55,7 @@ import ProjectService from "../ProjectService";
 
            },
            async removeTodo(todo){
-            //    await ProjectService.pullTodo(todo);
+               await ProjectService.pullTodo(todo.todo);
                console.log(todo.todo);
            },
            async toggleCompleted(){

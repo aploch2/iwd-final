@@ -39,9 +39,10 @@ class ProjectService {
     }
 
     static pullTodo(id, todo){
-        return axios.patch(`${url}${id}`, {
+        return axios.patch(`${url}${id}/edit`, {
             todo
         })
+        // console.log(todo);
     }
 
     static deleteProject(id){
