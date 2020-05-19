@@ -50,11 +50,11 @@ router.post('/', async (req, res) => {
 //         todo
 //     });
 // });
-router.put('/:id', async function(req, res){
-    const projects = loadProjectsCollection();
+// router.put('/:id', async function(req, res){
+//     const projects = loadProjectsCollection();
     
-    res.send(await projects.findOneAndUpdate(req.params.id));
-});
+//     res.send(await projects.findOneAndUpdate(req.params.id));
+// });
 
 router.delete('/:id', async (req, res) => {
     const projects = await loadProjectsCollection();

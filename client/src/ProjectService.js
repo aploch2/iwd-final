@@ -32,13 +32,15 @@ class ProjectService {
         });
     }
 
-
-    
-    // static insertTodo(todo){
-    //     return axios.put('http://192.168.1.175:5000/api/projects/5ebdc88490ad699ec85271c0', {
-    //         todos: todo
-    //     });
-    // }
+    static insertTodo(id, todo){
+        return axios.patch(`${url}${id}`, {
+            todos: [
+                { todo: todo, completed: false}
+            ]
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
+    }
 
     static deleteProject(id){
         return axios.delete(`${url}${id}`);

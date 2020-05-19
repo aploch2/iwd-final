@@ -7,8 +7,8 @@
         <h5><a :href="singleProject.link">Github Link</a></h5>
         <h3>{{singleProject.deadline}}</h3>
         <h3>Add New Todo</h3>
-        <!-- <input type="text" v-model="todo" name="todo"> 
-        <button @click="toggleCompleted()">Add</button> -->
+        <input type="text" v-model="todo" name="todo"> 
+        <button @click="addTodo()">Add</button>
         <div class="todos" v-for="todo in singleProject.todos" :key="todo.todo">
             <p>{{todo.todo}}</p>
             <h6 v-if="todo.completed == false">False</h6>
