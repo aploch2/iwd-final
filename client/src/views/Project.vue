@@ -7,13 +7,15 @@
         <h5><a :href="singleProject.link">Github Link</a></h5>
         <h3>{{singleProject.deadline}}</h3>
         <h3>Add New Todo</h3>
-        <input type="text" v-model="todo" name="todo"> 
-        <button @click="addTodo()">Add</button>
-        <div class="todos" v-for="todo in singleProject.todos" :key="todo.todo">
-            <p>{{todo.todo}}</p>
-            <h6 v-if="todo.completed == false">False</h6>
-            <h6 v-else>True</h6>
-            
+        <input type="text" v-model="newTodo" name="newTodo"> 
+        <button @click="addTodo(newTodo)">Add</button>
+        <div v-if="todo = !null">
+            <div class="todos" v-for="(todo, index) in singleProject.todos" :key="index">
+                <p>{{todo.todo}}</p>
+                <h6 v-if="todo.completed == false">False</h6>
+                <h6 v-else>True</h6>
+                <p @click="removeTodo(todo)">remove</p>
+            </div>
         </div>
 
     </div>
@@ -24,7 +26,7 @@ import ProjectService from "../ProjectService";
 
     export default {
         props: [
-            'todo',
+            'newTodo',
         ],
         data() {
             return {
@@ -32,6 +34,7 @@ import ProjectService from "../ProjectService";
                 projectTitle: '',
                 projectLink: '',
                 projectDeadline: '',
+                todoNew: 'newTodo',
             }
         },
         async created() {
@@ -44,12 +47,15 @@ import ProjectService from "../ProjectService";
         //    this.id = this.$route.params.id; 
         },
         methods: {
-           async addTodo(){
-                await ProjectService.insertTodo(this.$route.params.id, "Project Test Fila");
-                console.log(this.todo);
-            // this.projects = await ProjectService.getProjects();
+           async addTodo(todoNew){
+                await ProjectService.insertTodo(this.$route.params.id, todoNew);
+                // console.log(this.newTodo);
                 this.$router.go();
 
+           },
+           async removeTodo(todo){
+            //    await ProjectService.pullTodo(todo);
+               console.log(todo.todo);
            },
            async toggleCompleted(){
                await ProjectService.toggleCompleted();

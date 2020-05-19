@@ -32,14 +32,16 @@ class ProjectService {
         });
     }
 
-    static insertTodo(id, todo){
+    static insertTodo(id, newTodo){
         return axios.patch(`${url}${id}`, {
-            todos: [
-                { todo: todo, completed: false}
-            ]
+            newTodo
         })
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
+    }
+
+    static pullTodo(id, todo){
+        return axios.patch(`${url}${id}`, {
+            todo
+        })
     }
 
     static deleteProject(id){

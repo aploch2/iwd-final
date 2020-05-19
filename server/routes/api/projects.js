@@ -14,47 +14,33 @@ router.post('/', async (req, res) => {
         title: req.body.title,
         deadline: req.body.deadline,
         link: req.body.link,
-        // image: req.body.image,
         todos: [],
         completed: false
     });
     res.status(201).send();
 });
 
+// add a todo
+router.patch('/:id', async (req, res) => {
+    const projects = await loadProjectsCollection();
+    let id = {"_id": mongodb.ObjectID(req.params.id)};
+    let todo = {todo: req.body.newTodo, completed: false};
+    let newTodo = { $push: {"todos": todo}};
+    projects.updateOne(id, newTodo);
 
-// router.put('/:id', async (req, res) => {
-//     let id = {
-//         _id: mongodb.ObjectID(req.params.id)
-//     };
-//     const projects = await loadProjectsCollection();
-//     res.send(await projects.updateOne({_id: mongodb.ObjectID(req.params.id), title: 'Project Test W'));
-//     // await projects.updateOne(({
-//     //     _id: id,
-//     //     title: "",
-//     // }));
-//     // res.status(200).send(await projects.findByIdAndUpdate(({
-//     //     _id: id,
-//     //     todos: [
-//     //         { todo: req.params.todo }
-//     //     ]
-//     // })));
-// });
-// router.put('/:id', async (req, res) => {
-//     const id = req.params.id;
-//     let todo = req.body.todo;
-//     const projects = await loadProjectsCollection();
-//     const project = await projects.findOneAndUpdate(id, todo);
-//     // let project = await projects.findByIdAndUpdate(id, req.body);
+    return res.status(200).send('todo added');    
+})
 
-//     return res.status(200).send({
-//         todo
-//     });
-// });
-// router.put('/:id', async function(req, res){
-//     const projects = loadProjectsCollection();
-    
-//     res.send(await projects.findOneAndUpdate(req.params.id));
-// });
+// remove a todo
+// router.patch('/:id', async (req, res) => {
+//     const projects = await loadProjectsCollection();
+//     let id = {"_id": mongodb.ObjectID(req.params.id)};
+//     let todo = {todo: "asdf", completed: false};
+//     let newTodo = { $pull: {"todos": todo}};
+//     projects.updateOne(id, newTodo);
+
+//     return res.status(200).send('todo added');    
+// })
 
 router.delete('/:id', async (req, res) => {
     const projects = await loadProjectsCollection();
