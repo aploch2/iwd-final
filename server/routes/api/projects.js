@@ -67,7 +67,7 @@ router.get('/:id', async (req, res) => {
 });
 
 async function loadProjectsCollection(){
-    const client = await mongodb.MongoClient.connect('mongodb://localhost:27017/iwd_final', {
+    const client = await mongodb.MongoClient.connect('mongodb://mongopm:27017/iwd_final', {
         useNewUrlParser: true
     });
 
