@@ -6,7 +6,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const projects = await loadProjectsCollection();
     res.send(await projects.find({}).toArray());
-    projects.close();
 });
 
 router.post('/', async (req, res) => {
