@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-const url = 'http://192.168.1.175:5000/api/projects/';
+const url = 'http://localhost:5000/api/projects/';
 
 class ProjectService {
     // Gets the projects
