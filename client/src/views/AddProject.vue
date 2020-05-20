@@ -1,7 +1,7 @@
 <template>
     <div class="add-project">
         <div class="nav">
-            <router-link to="/" id="go-back">Go Back</router-link>
+            <router-link to="/" id="go-back">&lsaquo; Go Back</router-link>
         </div>
         <h1>Add A Project</h1>
             <input type="text" name="project-title" id="project-title" v-model="title" placeholder="Project title">

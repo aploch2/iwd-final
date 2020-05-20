@@ -6,11 +6,13 @@
         <div class="card-info">
             <router-link class="project-page-link" :to="{ name: 'project', params: { id: project._id } }">{{ project.title }}</router-link>
             <p class="project-deadline"><span>Deadline: </span>{{ project.deadline }}</p>
-            <div class="link-container">
-                <a :href="project.link" target="_blank">GitHub Link</a>
-            </div>
-            <div class="delete-container">
-                <p class="delete-link" @click="deleteProject(project.title, project._id)">delete</p>
+            <div class="card-info-footer">
+                <div class="link-container">
+                    <a :href="project.link" target="_blank"><font-awesome-icon :icon="['fab', 'github']" class="github-icon" /> GitHub</a>
+                </div>
+                <div class="delete-container">
+                    <p class="delete-link" @click="deleteProject(project.title, project._id)"><font-awesome-icon icon="trash-alt" class="remove-todo" /></p>
+                </div>
             </div>
         </div>
         <DeleteModal />
@@ -88,7 +90,11 @@ import DeleteModal from "./DeleteModal";
                 color: lightskyblue;
                 transition: 0.2s ease-in-out;
             }
+            
         }
+        .github-icon {
+                font-size: 1.25em
+            }
         .project-deadline {
             color: purple;
         }
@@ -114,8 +120,13 @@ import DeleteModal from "./DeleteModal";
                 ;
             }
         }
+        .card-info-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
         .link-container {
-            margin-top: 75px;
+            margin-top: 25px;
             margin-bottom: 15px;
 
             a {
@@ -140,13 +151,14 @@ import DeleteModal from "./DeleteModal";
 
             .delete-link {
                 color: purple;
-                border: 1px solid rgba(0, 0, 0, 0.0);
-                transition: 0.3s ease-in-out;
+                // border: 1px solid rgba(0, 0, 0, 0.0);
+                transition: 0.15s ease-in-out;
 
                 &:hover {
-                    border: 1px solid purple;
+                    color: lighten(purple, 50);
+                    // border: 1px solid purple;
                     cursor: pointer;
-                    transition: 0.3s ease-in-out;
+                    transition: 0.15s ease-in-out;
                 }
             }
         }

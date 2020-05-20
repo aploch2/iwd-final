@@ -1,6 +1,6 @@
 <template>
     <div id="nav">
-        <router-link to="/add-project" id="add-project">New Project</router-link> 
+        <router-link to="/add-project" id="add-project"><font-awesome-icon icon="plus" class="plus-icon" />New Project</router-link> 
     </div>
 </template>
 
@@ -38,5 +38,9 @@
             color: purple;
             transition: 0.3s ease-in-out;
         }
+    }
+    .plus-icon {
+        margin-right: 5px;
+        // font-size: ;
     }
 </style>

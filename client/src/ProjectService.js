@@ -45,9 +45,17 @@ class ProjectService {
         // console.log(todo);
     }
 
+    static todoComplete(id, completed, todo){
+        return axios.patch(`${url}${id}/edit`, {
+            todo,
+            completed
+        })
+    }
+
     static deleteProject(id){
         return axios.delete(`${url}${id}`);
     }
+    
     static getProject(id){
         return axios.get(`${url}${id}`).then(response => {
             return response.data

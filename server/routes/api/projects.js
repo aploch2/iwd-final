@@ -43,6 +43,17 @@ router.patch('/:id/edit', async (req, res) => {
     return res.status(200).send('todo removed');    
 })
 
+// complete or uncomplete a todo
+// router.patch('/:id/edit', async (req, res) => {
+//     const projects = await loadProjectsCollection();
+//     let id = {"_id": mongodb.ObjectID(req.params.id)};
+//     let todo = [{todo: req.body.todo, completed: req.body.completed}];
+//     let newTodo = { $set: {"todos": todo}};
+//     projects.updateOne(id, newTodo);
+
+//     return res.status(200).send('todo modified');    
+// })
+
 router.delete('/:id', async (req, res) => {
     const projects = await loadProjectsCollection();
     await projects.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
