@@ -8,11 +8,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.get('/', (req, res) => {
-    res.send('hello there');
-})
 
 
+const projects = require('./routes/api/projects');
+
+app.use('/api/projects', projects);
 
 const port = process.env.PORT || 5000;
 
