@@ -12,7 +12,7 @@ A self hosted project manager tool
 1. Clone the respository
 
 ```
-git clone https://www.github.com/aploch2/iwd-final.git`
+git clone https://www.github.com/aploch2/iwd-final.git
 ```
 
 2. Navigate to the folder
