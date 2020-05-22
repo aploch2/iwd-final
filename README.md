@@ -26,7 +26,7 @@ cd iwd-final
 ```
 npm run production
 // or
-docker-compose up --build
+docker-compose up -d --build
 ```
 
 <hr>

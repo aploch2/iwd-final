@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "production": "docker-compose up --build"
+    "production": "docker-compose up -d --build"
   },
   "repository": {
     "type": "git",
